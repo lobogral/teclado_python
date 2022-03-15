@@ -2,7 +2,7 @@ from os import listdir
 
 # Abro archivo y obtengo texto en minúsculas
 archivo = open('quijote.txt', encoding="utf-8")
-texto = archivo.read()
+texto = archivo.read().lower()
 
 # Obtengo la frecuencia de los caracteres
 frecCaracteres={}
@@ -19,22 +19,32 @@ relAcentosNoAcentos = {
     'é': 'e',
     'í': 'i',
     'ó': 'o',
-    'ú': 'u'}
+    'ú': 'u'
+}
 frecCaracteres['´'] = 0
-
 for caracter in frecCaracteres:
     if caracter in list(relAcentosNoAcentos.keys()): 
         caracterSinAcento = relAcentosNoAcentos[caracter]
         frecCaracteres[caracterSinAcento] += frecCaracteres[caracter]
-        frecCaracteres['´'] += frecCaracteres[caracter]
+        frecCaracteres["´"] += frecCaracteres[caracter]
+
+# Agrego frecuencias de los caracteres con dieresis a los que no tienen dieresis
+# Agrego frecuencias de la dieresis
+frecCaracteres['¨'] = 0
+frecCaracteres['u'] += frecCaracteres['ü']
+frecCaracteres['¨'] += frecCaracteres['ü']
 
 
 # Remuevo caracteres que no se utilizarán (Por ahora)
-for caracter in list(relAcentosNoAcentos.keys()):
+caracteresRetirar =  ['(', ')', '¿', '?', '¡', '!', '»', '«', '[', ']']
+caracteresRetirar += ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+caracteresRetirar += ["'", '"', '-', '—', '*', '\n', '\ufeff']
+caracteresRetirar += ['á', 'é', 'í', 'ó', 'ú', 'ü']
+caracteresRetirar += ['ù', 'à', 'ï']
+
+for caracter in caracteresRetirar:
     frecCaracteres.pop(caracter, None)
 
-frecCaracteres.pop("(", None)
-frecCaracteres.pop(")", None)
 
 # Ordeno los caracteres para una lectura más fácil
 frecCaracteres = dict(sorted(frecCaracteres.items(),
@@ -42,10 +52,12 @@ frecCaracteres = dict(sorted(frecCaracteres.items(),
                              reverse = True))
 
 for caracter, frecuencia in frecCaracteres.items():
-    print(caracter + " : " + str(frecuencia))
+    print(repr(caracter) + " : " + str(frecuencia))
 
 # Comprobación texto vs diccionario
 print(len(texto))
 print(sum([value for key, value in frecCaracteres.items()]))
+
+
 
 
