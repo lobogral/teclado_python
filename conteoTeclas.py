@@ -14,19 +14,11 @@ for caracter in texto:
 
 # Agrego frecuencias de los caracteres con tilde a los que no tienen tilde
 # Agrego frecuencias de la tilde
-relAcentosNoAcentos = {
-    'á': 'a',
-    'é': 'e',
-    'í': 'i',
-    'ó': 'o',
-    'ú': 'u'
-}
+relAcentosNoAcentos = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u'}
 frecCaracteres['´'] = 0
-for caracter in frecCaracteres:
-    if caracter in list(relAcentosNoAcentos.keys()): 
-        caracterSinAcento = relAcentosNoAcentos[caracter]
-        frecCaracteres[caracterSinAcento] += frecCaracteres[caracter]
-        frecCaracteres["´"] += frecCaracteres[caracter]
+for acento, noAcento in relAcentosNoAcentos.items():
+    frecCaracteres[noAcento] += frecCaracteres[acento]
+    frecCaracteres["´"] += frecCaracteres[acento]
 
 # Agrego frecuencias de los caracteres con dieresis a los que no tienen dieresis
 # Agrego frecuencias de la dieresis
@@ -57,6 +49,7 @@ for caracter, frecuencia in frecCaracteres.items():
 # Comprobación texto vs diccionario
 print(len(texto))
 print(sum([value for key, value in frecCaracteres.items()]))
+
 
 
 
