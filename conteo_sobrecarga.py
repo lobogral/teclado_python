@@ -57,27 +57,27 @@ for comb, frec in copia_frec_combs.items():
 Nota: Se define conmutatividad, es decir:
 por ejemplo 'ia' es lo mismo que 'ai', en lo que se refiere a la sobrecarga
 """
-letras = string.ascii_lowercase + "ñ"
-frec_comb_carac: dict[str, int] = {}
+combs_utils = string.ascii_lowercase + "ñ"
+frec_comb_utils: dict[str, int] = {}
 
 for comb, frec in frec_combs.items():
-    if (comb[0] in letras) and (comb[1] in letras):
-        if (comb[1] + comb[0]) in frec_comb_carac:
-            frec_comb_carac[comb[1] + comb[0]] += frec
+    if (comb[0] in combs_utils) and (comb[1] in combs_utils):
+        if (comb[1] + comb[0]) in frec_comb_utils:
+            frec_comb_utils[comb[1] + comb[0]] += frec
         else:
-            frec_comb_carac[comb] = frec
+            frec_comb_utils[comb] = frec
 
 
 # Ordeno los caracteres para una lectura más fácil
-frec_comb_carac = dict(sorted(frec_comb_carac.items(),
-                               key=lambda x: x[1],
-                               reverse=True))
+frec_comb_utils = dict(sorted(frec_comb_utils.items(),
+                              key=lambda x: x[1],
+                              reverse=True))
 
 # Creo un archivo de analisis
 if not os.path.exists('resultados_conteo_sobrecarga'):
     os.mkdir('resultados_conteo_sobrecarga')
     
 archivo = open('resultados_conteo_sobrecarga/analisis' + nombre_archivo, "w")
-for comb, frecuencia in frec_comb_carac.items():
-    archivo.write(repr(comb) + " : " + str(frecuencia) + "\n")
+for comb_util, frecuencia in frec_comb_utils.items():
+    archivo.write(repr(comb_util) + " : " + str(frecuencia) + "\n")
 archivo.close()

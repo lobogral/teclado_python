@@ -8,13 +8,13 @@ with open(nombre_archivo, encoding="utf-8") as archivo:
     texto = archivo.read().lower()
 
 # Obtengo la frecuencia de los caracteres
-frec_caracteres: dict[str, int] = {}
+frec_caracs: dict[str, int] = {}
 
 for caracter in texto:
-    if caracter in frec_caracteres:
-        frec_caracteres[caracter] += 1
+    if caracter in frec_caracs:
+        frec_caracs[caracter] += 1
     else:
-        frec_caracteres[caracter] = 1
+        frec_caracs[caracter] = 1
 
 # Analizo situación de las tildes y la diéresis (Agrego frecuencias a vocales)
 rel_signs = {
@@ -27,23 +27,23 @@ rel_signs = {
 }
 
 for sign, no_sign in rel_signs.items():
-    frec_caracteres[no_sign] += frec_caracteres[sign]
+    frec_caracs[no_sign] += frec_caracs[sign]
 
 # Creo diccionario con las frecuencias de la letras
-letras = string.ascii_lowercase + "ñ"
-frec_letras: dict[str, int] = {}
+caracs_utils = string.ascii_lowercase + "ñ"
+frec_caracs_utils: dict[str, int] = {}
 
-for letra in letras:
-    if letra in frec_caracteres:
-        frec_letras[letra] = frec_caracteres[letra]
+for carac_util in caracs_utils:
+    if carac_util in frec_caracs:
+        frec_caracs_utils[carac_util] = frec_caracs[carac_util]
     else:
-        frec_letras[letra] = 0
+        frec_caracs_utils[carac_util] = 0
 
 
 # Ordeno los caracteres para una lectura más fácil
-frec_letras = dict(sorted(frec_letras.items(),
-                          key=lambda x: x[1],
-                          reverse=True))
+frec_caracs_utils = dict(sorted(frec_caracs_utils.items(),
+                                key=lambda x: x[1],
+                                reverse=True))
 
 # Creo un archivo de analisis
 
@@ -51,6 +51,6 @@ if not os.path.exists('resultados_conteo_carga'):
     os.mkdir('resultados_conteo_carga')
 
 archivo = open('resultados_conteo_carga/analisis' + nombre_archivo, "w")
-for letra, frecuencia in frec_letras.items():
-    archivo.write(repr(letra) + " : " + str(frecuencia) + "\n")
+for carac_util, frecuencia in frec_caracs_utils.items():
+    archivo.write(repr(carac_util) + " : " + str(frecuencia) + "\n")
 archivo.close()
