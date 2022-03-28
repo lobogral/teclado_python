@@ -1,4 +1,5 @@
 import string
+import os
 
 nombre_archivo = 'LaRegenta.txt'
 
@@ -15,15 +16,18 @@ for caracter in texto:
     else:
         frec_caracteres[caracter] = 1
 
-# Agrego frecuencias de los caracteres con tilde a los que no tienen tilde
-rel_acentos_no_acentos = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u'}
-for acento, no_acento in rel_acentos_no_acentos.items():
-    frec_caracteres[no_acento] += frec_caracteres[acento]
+# Analizo situación de las tildes y la diéresis (Agrego frecuencias a vocales)
+rel_signs = {
+    'á': 'a',
+    'é': 'e',
+    'í': 'i',
+    'ó': 'o',
+    'ú': 'u',
+    'ü': 'u'
+}
 
-
-# Agrego frecuencias de los caracteres con dieresis a los que no tienen dieresis
-frec_caracteres['u'] += frec_caracteres['ü']
-
+for sign, no_sign in rel_signs.items():
+    frec_caracteres[no_sign] += frec_caracteres[sign]
 
 # Creo diccionario con las frecuencias de la letras
 letras = string.ascii_lowercase + "ñ"
@@ -42,7 +46,11 @@ frec_letras = dict(sorted(frec_letras.items(),
                           reverse=True))
 
 # Creo un archivo de analisis
-archivo = open('analisis' + nombre_archivo, "w")
+
+if not os.path.exists('resultados_conteo_carga'):
+    os.mkdir('resultados_conteo_carga')
+
+archivo = open('resultados_conteo_carga/analisis' + nombre_archivo, "w")
 for letra, frecuencia in frec_letras.items():
     archivo.write(repr(letra) + " : " + str(frecuencia) + "\n")
 archivo.close()
