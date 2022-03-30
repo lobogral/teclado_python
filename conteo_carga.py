@@ -2,6 +2,8 @@ import string
 import os
 
 nombre_archivo = 'LaRegenta.txt'
+#nombre_archivo = 'LaRanaViajera.txt'
+#nombre_archivo = 'LaNinaRobada.txt'
 
 # Abro archivo y obtengo texto en minúsculas
 with open(nombre_archivo, encoding="utf-8") as archivo:
@@ -59,7 +61,7 @@ if not os.path.exists('resultados_conteo_carga'):
     os.mkdir('resultados_conteo_carga')
 
 archivo = open('resultados_conteo_carga/analisis' + nombre_archivo, "w")
-archivo.write("Caracter  Frecuencia\n")
+archivo.write("Caracter  Frecuencia")
 for carac_util, frecuencia in frec_caracs_utils.items():
-    archivo.write(repr(carac_util) + "       " + str(frecuencia) + "\n")
+    archivo.write("\n" + carac_util + "         " + str(frecuencia))
 archivo.close()

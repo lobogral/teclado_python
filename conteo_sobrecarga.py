@@ -81,7 +81,7 @@ if not os.path.exists('resultados_conteo_sobrecarga'):
     os.mkdir('resultados_conteo_sobrecarga')
     
 archivo = open('resultados_conteo_sobrecarga/analisis' + nombre_archivo, "w")
-archivo.write("Combinacion  Frecuencia\n")
+archivo.write("Combinacion  Frecuencia")
 for comb_util, frecuencia in frec_comb_utils.items():
-    archivo.write(repr(comb_util) + "         " + str(frecuencia) + "\n")
+    archivo.write("\n" + comb_util + "           " + str(frecuencia))
 archivo.close()
