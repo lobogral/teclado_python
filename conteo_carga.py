@@ -59,6 +59,7 @@ if not os.path.exists('resultados_conteo_carga'):
     os.mkdir('resultados_conteo_carga')
 
 archivo = open('resultados_conteo_carga/analisis' + nombre_archivo, "w")
+archivo.write("Caracter  Frecuencia\n")
 for carac_util, frecuencia in frec_caracs_utils.items():
-    archivo.write(repr(carac_util) + " : " + str(frecuencia) + "\n")
+    archivo.write(repr(carac_util) + "       " + str(frecuencia) + "\n")
 archivo.close()
