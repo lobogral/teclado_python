@@ -16,21 +16,29 @@ for caracter in texto:
     else:
         frec_caracs[caracter] = 1
 
-# Analizo situación de las tildes y la diéresis (Agrego frecuencias a vocales)
+# Analizo situación de las tildes
+"""
+Nota: Agrego frecuencias a las vocales
+y agrego frecuencias a las tildes
+
+Nota: La dieresis no se analiza porque
+es despreciable
+"""
+frec_caracs['´'] = 0
 rel_signs = {
     'á': 'a',
     'é': 'e',
     'í': 'i',
     'ó': 'o',
-    'ú': 'u',
-    'ü': 'u'
+    'ú': 'u'
 }
 
 for sign, no_sign in rel_signs.items():
     frec_caracs[no_sign] += frec_caracs[sign]
+    frec_caracs['´'] += frec_caracs[sign]
 
 # Creo diccionario con las frecuencias de la letras
-caracs_utils = string.ascii_lowercase + "ñ"
+caracs_utils = string.ascii_lowercase + "ñ´,."
 frec_caracs_utils: dict[str, int] = {}
 
 for carac_util in caracs_utils:

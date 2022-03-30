@@ -24,32 +24,35 @@ for caracter_final in texto:
 
     caracter_inicial = caracter_final
 
-# Analizo situación de las tildes y la diéresis (Agrego frecuencias a vocales)
-"""
-Nota: Solo se analiza un caso
-aá -> a´a
-áa -> ´aa
-áá -> ´a´a
-El caso 2 se analiza por continuidad
-"""
-
+# Analizo situación de las tildes (Agrego frecuencias a vocales)
 rel_signs = {
     'á': 'a',
     'é': 'e',
     'í': 'i',
     'ó': 'o',
-    'ú': 'u',
-    'ü': 'u'
+    'ú': 'u'
 }
 
 copia_frec_combs = frec_combs.copy()
 
 for comb, frec in copia_frec_combs.items():
-    if (comb[0] in "áéíóúü") and (comb[1] not in "áéíóúü"):
+    if comb[0] in "áéíóú":
         if rel_signs[comb[0]] + comb[1] in frec_combs:
             frec_combs[rel_signs[comb[0]] + comb[1]] += frec
         else:
             frec_combs[rel_signs[comb[0]] + comb[1]] = frec
+    if comb[1] in "áéíóú":
+        if comb[0] + '´' in frec_combs:
+            frec_combs[comb[0] + '´'] += frec
+        else:
+            frec_combs[comb[0] + '´'] = frec
+
+for caracter in texto:
+    if (caracter in "áéíóú"):
+        if '´' + rel_signs[caracter] in frec_combs:
+            frec_combs['´' + rel_signs[caracter]] += 1
+        else:
+            frec_combs['´' + rel_signs[caracter]] = 1
 
 
 # Retiro caracteres que no se van a evaluar
@@ -57,7 +60,7 @@ for comb, frec in copia_frec_combs.items():
 Nota: Se define conmutatividad, es decir:
 por ejemplo 'ia' es lo mismo que 'ai', en lo que se refiere a la sobrecarga
 """
-combs_utils = string.ascii_lowercase + "ñ"
+combs_utils = string.ascii_lowercase + "ñ,.´"
 frec_comb_utils: dict[str, int] = {}
 
 for comb, frec in frec_combs.items():
