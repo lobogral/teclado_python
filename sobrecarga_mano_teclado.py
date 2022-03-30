@@ -5,9 +5,9 @@ def conteo_sobrecarga(nom_teclado, caracs_izquierda):
     no_sobrecarga: int = 0
 
     for comb, frec in frec_combs.items():
-        if (comb[0] in caracs_izquierda) and (comb[1] not in caracs_izquierda):
+        if (comb[0] in caracs_izquierda) and (comb[1] in caracs_izquierda):
             sobrecarga += frec
-        elif (comb[0] not in caracs_izquierda) and (comb[1] in caracs_izquierda):
+        elif (comb[0] not in caracs_izquierda) and (comb[1] not in caracs_izquierda):
             sobrecarga += frec
         else:
             no_sobrecarga += frec
