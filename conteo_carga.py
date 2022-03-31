@@ -1,12 +1,12 @@
 import string
 import os
 
-nombre_archivo = 'LaRegenta.txt'
-#nombre_archivo = 'LaRanaViajera.txt'
-#nombre_archivo = 'LaNinaRobada.txt'
+nombre_libro = 'LaRegenta'
+#nombre_libro = 'LaRanaViajera'
+#nombre_libro = 'LaNinaRobada'
 
 # Abro archivo y obtengo texto en minúsculas
-with open(nombre_archivo, encoding="utf-8") as archivo:
+with open(nombre_libro + '.txt', encoding="utf-8") as archivo:
     texto = archivo.read().lower()
 
 # Obtengo la frecuencia de los caracteres
@@ -56,11 +56,11 @@ frec_caracs_utils = dict(sorted(frec_caracs_utils.items(),
                                 reverse=True))
 
 # Creo un archivo de analisis
+nombre_carpeta = 'resultados_conteo_carga'
+if not os.path.exists(nombre_carpeta):
+    os.mkdir(nombre_carpeta)
 
-if not os.path.exists('resultados_conteo_carga'):
-    os.mkdir('resultados_conteo_carga')
-
-archivo = open('resultados_conteo_carga/analisis' + nombre_archivo, "w")
+archivo = open(nombre_carpeta + '/analisis' + nombre_libro + '.txt', "w")
 archivo.write("Caracter  Frecuencia")
 for carac_util, frecuencia in frec_caracs_utils.items():
     archivo.write("\n" + carac_util + "         " + str(frecuencia))

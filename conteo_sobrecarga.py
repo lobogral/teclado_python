@@ -1,10 +1,10 @@
 import string
 import os
 
-nombre_archivo = 'LaRegenta.txt'
+nombre_libro = 'LaRegenta'
 
 # Abro archivo y obtengo texto en minúsculas
-with open(nombre_archivo, encoding="utf-8") as archivo:
+with open(nombre_libro + '.txt', encoding="utf-8") as archivo:
     texto = archivo.read().lower()
 
 
@@ -64,7 +64,7 @@ combs_utils = string.ascii_lowercase + "ñ,.´"
 frec_comb_utils: dict[str, int] = {}
 
 for comb, frec in frec_combs.items():
-    if (comb[0] in combs_utils) and (comb[1] in combs_utils):
+    if (comb[0] in combs_utils) and (comb[1] in combs_utils) and (comb[0] != comb[1]):
         if (comb[1] + comb[0]) in frec_comb_utils:
             frec_comb_utils[comb[1] + comb[0]] += frec
         else:
@@ -77,10 +77,11 @@ frec_comb_utils = dict(sorted(frec_comb_utils.items(),
                               reverse=True))
 
 # Creo un archivo de analisis
-if not os.path.exists('resultados_conteo_sobrecarga'):
-    os.mkdir('resultados_conteo_sobrecarga')
+nombre_carpeta = 'resultados_conteo_sobrecarga'
+if not os.path.exists(nombre_carpeta):
+    os.mkdir(nombre_carpeta)
     
-archivo = open('resultados_conteo_sobrecarga/analisis' + nombre_archivo, "w")
+archivo = open(nombre_carpeta + '/analisis' + nombre_libro + '.txt', "w")
 archivo.write("Combinacion  Frecuencia")
 for comb_util, frecuencia in frec_comb_utils.items():
     archivo.write("\n" + comb_util + "           " + str(frecuencia))
