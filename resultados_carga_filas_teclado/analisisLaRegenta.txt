@@ -1,0 +1,19 @@
+
+ ------------------------------------
+ Teclado qwerty:
+ ------------------------------------
+ Frecuencia fila superior: 705505
+ Frecuencia fila media: 499157
+ Frecuencia fila inferior: 280288
+ ------------------------------------
+ Teclado dvorak:
+ ------------------------------------
+ Frecuencia fila superior: 279335
+ Frecuencia fila media: 1094542
+ Frecuencia fila inferior: 111073
+ ------------------------------------
+ Teclado colemak:
+ ------------------------------------
+ Frecuencia fila superior: 282566
+ Frecuencia fila media: 1010986
+ Frecuencia fila inferior: 191398

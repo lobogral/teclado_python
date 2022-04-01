@@ -1,6 +1,10 @@
 import os
 
 nombre_libro = 'LaRegenta'
+#nombre_libro = 'DonQuijote'
+#nombre_libro = 'ElInternetYLosIdiomas'
+#nombre_libro = 'LaRanaViajera'
+#nombre_libro = 'LaNinaRobada'
 
 def frecuencia_dedos(nom_teclado, caracs_facil, caracs_intermedio):
     frec_facil: int = 0
@@ -16,12 +20,12 @@ def frecuencia_dedos(nom_teclado, caracs_facil, caracs_intermedio):
             frec_dificil += frec
 
     texto = ""
-    texto += "------------------------------------" + "\n"
-    texto += "Teclado " + nom_teclado + ":" + "\n"
-    texto += "------------------------------------" + "\n"
-    texto += "Frecuencia facil: " + str(frec_facil) + "\n"
-    texto += "Frecuencia intermedia: " + str(frec_intermedio) + "\n"
-    texto += "Frecuencia dificil: " + str(frec_dificil)
+    texto += "\n ------------------------------------"
+    texto += "\n Teclado " + nom_teclado + ":"
+    texto += "\n ------------------------------------"
+    texto += "\n Frecuencia facil: " + str(frec_facil)
+    texto += "\n Frecuencia intermedia: " + str(frec_intermedio)
+    texto += "\n Frecuencia dificil: " + str(frec_dificil)
     return texto
 
 # Abro archivo y obtengo diccionario

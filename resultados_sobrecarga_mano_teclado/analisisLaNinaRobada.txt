@@ -1,0 +1,16 @@
+
+ ------------------------------------
+ Teclado qwerty:
+ ------------------------------------
+ Frecuencia sobrecarga: 55961
+ Frecuencia no sobrecarga: 60462
+ ------------------------------------
+ Teclado dvorak:
+ ------------------------------------
+ Frecuencia sobrecarga: 30487
+ Frecuencia no sobrecarga: 85936
+ ------------------------------------
+ Teclado colemak:
+ ------------------------------------
+ Frecuencia sobrecarga: 52584
+ Frecuencia no sobrecarga: 63839

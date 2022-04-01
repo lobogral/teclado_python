@@ -2,6 +2,8 @@ import string
 import os
 
 nombre_libro = 'LaRegenta'
+#nombre_libro = 'DonQuijote'
+#nombre_libro = 'ElInternetYLosIdiomas'
 #nombre_libro = 'LaRanaViajera'
 #nombre_libro = 'LaNinaRobada'
 

@@ -1,6 +1,10 @@
 import os
 
 nombre_libro = 'LaRegenta'
+#nombre_libro = 'DonQuijote'
+#nombre_libro = 'ElInternetYLosIdiomas'
+#nombre_libro = 'LaRanaViajera'
+#nombre_libro = 'LaNinaRobada'
 
 def frecuencia_filas(nom_teclado, caracs_fila_superior, caracs_fila_media):
     frec_fila_superior: int = 0
@@ -16,12 +20,12 @@ def frecuencia_filas(nom_teclado, caracs_fila_superior, caracs_fila_media):
             frec_fila_inferior += frec
 
     texto = ""
-    texto += "------------------------------------" + "\n"
-    texto += "Teclado " + nom_teclado + ":" + "\n"
-    texto += "------------------------------------" + "\n"
-    texto += "Frecuencia fila superior: " + str(frec_fila_superior) + "\n"
-    texto += "Frecuencia fila media: " + str(frec_fila_media) + "\n"
-    texto += "Frecuencia fila inferior: " + str(frec_fila_inferior)
+    texto += "\n ------------------------------------"
+    texto += "\n Teclado " + nom_teclado + ":"
+    texto += "\n ------------------------------------"
+    texto += "\n Frecuencia fila superior: " + str(frec_fila_superior)
+    texto += "\n Frecuencia fila media: " + str(frec_fila_media)
+    texto += "\n Frecuencia fila inferior: " + str(frec_fila_inferior)
     return texto
 
 # Abro archivo y obtengo diccionario

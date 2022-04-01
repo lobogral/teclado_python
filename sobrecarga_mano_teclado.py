@@ -1,6 +1,10 @@
 import os
 
 nombre_libro = 'LaRegenta'
+#nombre_libro = 'DonQuijote'
+#nombre_libro = 'ElInternetYLosIdiomas'
+#nombre_libro = 'LaRanaViajera'
+#nombre_libro = 'LaNinaRobada'
 
 def conteo_sobrecarga(nom_teclado, caracs_izquierda):
     sobrecarga: int = 0
@@ -15,11 +19,11 @@ def conteo_sobrecarga(nom_teclado, caracs_izquierda):
             no_sobrecarga += frec
 
     texto = ""
-    texto += "------------------------------------" + "\n"
-    texto += "Teclado " + nom_teclado + ":" + "\n"
-    texto += "------------------------------------" + "\n"
-    texto += "Frecuencia sobrecarga: " + str(sobrecarga) + "\n"
-    texto += "Frecuencia no sobrecarga: " + str(no_sobrecarga)
+    texto += "\n ------------------------------------"
+    texto += "\n Teclado " + nom_teclado + ":"
+    texto += "\n ------------------------------------"
+    texto += "\n Frecuencia sobrecarga: " + str(sobrecarga)
+    texto += "\n Frecuencia no sobrecarga: " + str(no_sobrecarga)
     return texto
 
 # Abro archivo y obtengo diccionario

@@ -1,0 +1,19 @@
+
+ ------------------------------------
+ Teclado qwerty:
+ ------------------------------------
+ Frecuencia facil: 72425
+ Frecuencia intermedia: 51883
+ Frecuencia dificil: 23926
+ ------------------------------------
+ Teclado dvorak:
+ ------------------------------------
+ Frecuencia facil: 96713
+ Frecuencia intermedia: 33879
+ Frecuencia dificil: 17642
+ ------------------------------------
+ Teclado colemak:
+ ------------------------------------
+ Frecuencia facil: 101003
+ Frecuencia intermedia: 34090
+ Frecuencia dificil: 13141

@@ -2,6 +2,10 @@ import string
 import os
 
 nombre_libro = 'LaRegenta'
+#nombre_libro = 'DonQuijote'
+#nombre_libro = 'ElInternetYLosIdiomas'
+#nombre_libro = 'LaRanaViajera'
+#nombre_libro = 'LaNinaRobada'
 
 # Abro archivo y obtengo texto en minúsculas
 with open(nombre_libro + '.txt', encoding="utf-8") as archivo:
